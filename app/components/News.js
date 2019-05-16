@@ -25,6 +25,7 @@ export default class News extends React.Component {
 	render() {
 		return (
 		    <div>
+		    	{this.state.error !== null && <div>{this.state.error}</div>}
 		    	{this.state.articles === null
 		    		? <p>LOADING</p>
 		    		: <Article articles={this.state.articles} />
