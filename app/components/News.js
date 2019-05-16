@@ -1,5 +1,6 @@
 import React from 'react'
 import Article from './Article'
+import PropTypes from 'prop-types'
 import { fetchMainPosts } from '../utils/api'
 
 export default class News extends React.Component {
@@ -8,7 +9,7 @@ export default class News extends React.Component {
 		error: null
 	}
 	componentDidMount() {
-		fetchMainPosts(this.props.type)
+		fetchMainPosts(this.props.story)
 		    .then((data) => {
 			    this.setState({
 			    	articles: data
@@ -33,4 +34,8 @@ export default class News extends React.Component {
 		    </div>
 		)
 	}
+}
+
+News.propTypes = {
+	story: PropTypes.string.isRequired
 }

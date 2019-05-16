@@ -16,6 +16,13 @@ li {
   padding: 50px;
 }
 
+.nav-link {
+	color: #006DAA;
+	font-weight: bold;
+	text-decoration: none;
+	padding-right: 20px;
+}
+
 .article {
 	background-color: #FAF9F9;
 	margin-bottom: 10px;
@@ -40,3 +47,20 @@ a.article-title:hover {
 	color: #5CA2C8;
 }
 
+.btn-clear {
+  border: none;
+  background: transparent;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+.space-between {
+	justify-content: space-between;
+}
+
+.nav li {
+	margin-right: 10px;
+}
