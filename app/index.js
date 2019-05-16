@@ -4,6 +4,7 @@ import './index.css'
 import News from './components/News'
 import Nav from './components/Nav'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Loading from './components/Loading'
 
 class App extends React.Component {
 	render() {
@@ -13,7 +14,7 @@ class App extends React.Component {
 			    	<h1>Hacker News</h1>
 			    	<Nav />
 
-			    	<React.Suspense>
+			    	<React.Suspense fallback={<Loading />}>
 				    	<Switch>
 					    	<Route exact path='/' render={(props) => <News story='top' />} />
 					    	<Route exact path='/new' render={(props) => <News story='new' />} />

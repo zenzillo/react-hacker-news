@@ -2,6 +2,7 @@ import React from 'react'
 import Article from './Article'
 import PropTypes from 'prop-types'
 import { fetchMainPosts } from '../utils/api'
+import Loading from './Loading'
 
 export default class News extends React.Component {
 	state = {
@@ -28,7 +29,7 @@ export default class News extends React.Component {
 		    <div>
 		    	{this.state.error !== null && <div>{this.state.error}</div>}
 		    	{this.state.articles === null
-		    		? <p>LOADING</p>
+		    		? <Loading />
 		    		: <Article articles={this.state.articles} />
 		    	}
 		    </div>
