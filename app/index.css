@@ -30,6 +30,14 @@ li {
 	color: #011627;
 }
 
+.article-header {
+	color: #011627;
+}
+
+.article-header a.article-title {
+	font-size: 2em;
+}
+
 a.article-title {
 	color: #D12A54;
 	text-decoration: none;
@@ -40,11 +48,15 @@ a.article-title:hover {
 	color: #FF3366;
 }
 
-.article-details a  {
+.details a  {
 	color: #006DAA;
 }
-.article-details a:hover  {
+.details a:hover  {
 	color: #5CA2C8;
+}
+
+.meta {
+	color: #aaa;
 }
 
 .btn-clear {
