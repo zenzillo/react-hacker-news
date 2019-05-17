@@ -37,14 +37,14 @@ export default class Posts extends React.Component {
 	      		})
 	      		.catch(({ message }) => {
 			        this.setState({
-			          error: 'There was an ERROR fetching the comments.',
+			          error: 'There was an error fetching the comments.',
 			          loading: false
 			        })
 			      })
 	      })
 	      .catch(({ message }) => {
 	        this.setState({
-	          error: 'There was an error fetching the comments.',
+	          error: 'There was an error fetching the post.',
 	          loading: false
 	        })
 	      })
@@ -54,7 +54,7 @@ export default class Posts extends React.Component {
 		    <div>
 		    {this.state.error !== null && <div>{this.state.error}</div>}
 		    {this.state.comments === null
-		    		? <Loading />
+		    		? <Loading text="Fetching comments..." />
 		    		:
 		    			<ThemeConsumer>
 	    					{({ theme }) => (

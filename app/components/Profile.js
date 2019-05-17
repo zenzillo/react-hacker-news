@@ -57,7 +57,7 @@ export default class Profile extends React.Component {
 		    <div>
 		    {this.state.error !== null && <div>{this.state.error}</div>}
 		    {this.state.articles === null
-		    		? <Loading />
+		    		? <Loading text="Fetching posts..." />
 		    		:
 		    			<ThemeConsumer>
 	    					{({ theme }) => (
