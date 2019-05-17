@@ -48,6 +48,15 @@ a.article-title:hover {
 	color: #FF3366;
 }
 
+.header {
+	color: #000;
+	margin-bottom: 5px;
+}
+
+.details {
+	color: gray;
+}
+
 .details a  {
 	color: #006DAA;
 }

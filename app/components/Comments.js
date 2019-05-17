@@ -47,8 +47,6 @@ export default class Comments extends React.Component {
 	          loading: false
 	        })
 	      })
-
-
 	}
 	render() {
 		return (
