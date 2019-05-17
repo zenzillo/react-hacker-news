@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import Nav from './components/Nav'
 import News from './components/News'
-import Comments from './components/Comments'
+import Posts from './components/Posts'
 import Loading from './components/Loading'
 import Profile from './components/Profile'
 import { ThemeProvider } from './contexts/theme'
@@ -31,7 +31,7 @@ class App extends React.Component {
 						    	<Switch>
 							    	<Route exact path='/' render={(props) => <News story='top' />} />
 							    	<Route exact path='/new' render={(props) => <News story='new' />} />
-							    	<Route exact path='/post' component={Comments} />
+							    	<Route exact path='/post' component={Posts} />
 							    	<Route exact path='/user' component={Profile} />
 							    	<Route render={() => <h1>404</h1>} />
 							    </Switch>

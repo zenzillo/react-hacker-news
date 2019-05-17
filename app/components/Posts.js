@@ -8,7 +8,7 @@ import { getFormattedDateFromTimestamp } from '../utils/helper'
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser'
 import { ThemeConsumer } from '../contexts/theme'
 
-export default class Comments extends React.Component {
+export default class Posts extends React.Component {
 	state = {
 		article: null,
 		comments: null,
@@ -60,7 +60,7 @@ export default class Comments extends React.Component {
 	    					{({ theme }) => (
 	    					    <React.Fragment>
 		    						<Article articles={[this.state.article]} mainStyle='article-header' />
-		    		  				<CommentView comments={this.state.comments} theme={theme} />
+		    		  				<Comments comments={this.state.comments} theme={theme} />
 		    		  			</React.Fragment>
 		    		  		)}
 		 				</ThemeConsumer>
@@ -70,7 +70,7 @@ export default class Comments extends React.Component {
 	}
 }
 
-function CommentView({ comments, theme }) {
+function Comments({ comments, theme }) {
 	const list = comments.map((comment) => (
 		<li key={comment.id} className="article">
 			<div className='details'>
