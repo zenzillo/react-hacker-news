@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { getFormattedDateFromTimestamp } from '../utils/helper'
+import { ThemeConsumer } from '../contexts/theme'
 
 export default class Article extends React.Component {
 
@@ -18,7 +19,11 @@ export default class Article extends React.Component {
 						</li>
 					 ))
 		return (
-		    <ul>{list}</ul>
+		    <ThemeConsumer>
+	    		{({ theme }) => (
+		    		<ul className={`bg-${theme}`}>{list}</ul>
+		    	)}
+			</ThemeConsumer>
 		)
 	}
 }

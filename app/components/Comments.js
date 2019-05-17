@@ -6,6 +6,7 @@ import Article from './Article'
 import { Link } from 'react-router-dom'
 import { getFormattedDateFromTimestamp } from '../utils/helper'
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser'
+import { ThemeConsumer } from '../contexts/theme'
 
 export default class Comments extends React.Component {
 	state = {
@@ -55,19 +56,23 @@ export default class Comments extends React.Component {
 		    {this.state.comments === null
 		    		? <Loading />
 		    		:
-		    			<React.Fragment>
-		    				<Article articles={[this.state.article]} mainStyle='article-header' />
-		    		  		<CommentView comments={this.state.comments} />
-		    		  	</React.Fragment>
+		    			<ThemeConsumer>
+	    					{({ theme }) => (
+	    					    <React.Fragment>
+		    						<Article articles={[this.state.article]} mainStyle='article-header' />
+		    		  				<CommentView comments={this.state.comments} theme={theme} />
+		    		  			</React.Fragment>
+		    		  		)}
+		 				</ThemeConsumer>
 		    	}
 		    </div>
 		)
 	}
 }
 
-function CommentView({ comments }) {
+function CommentView({ comments, theme }) {
 	const list = comments.map((comment) => (
-		<li key={comment.id} className='article'>
+		<li key={comment.id} className="article">
 			<div className='details'>
 				<div className='meta'>
 				by <Link to={`user?id=${comment.by}`}>{comment.by}</Link> on {getFormattedDateFromTimestamp(comment.time)}<br /><br />
@@ -77,6 +82,6 @@ function CommentView({ comments }) {
 		</li>
 	 ))
 	return (
-	    <ul>{list}</ul>
+	    <ul className={`bg-${theme}`}>{list}</ul>
 	)
 }

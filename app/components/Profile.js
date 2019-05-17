@@ -5,6 +5,8 @@ import Loading from './Loading'
 import { fetchUser, fetchPosts } from '../utils/api'
 import { getFormattedDateFromTimestamp } from '../utils/helper'
 import ReactHtmlParser from 'react-html-parser'
+import PropTypes from 'prop-types'
+import { ThemeConsumer } from '../contexts/theme'
 
 
 export default class Profile extends React.Component {
@@ -57,11 +59,15 @@ export default class Profile extends React.Component {
 		    {this.state.articles === null
 		    		? <Loading />
 		    		:
-		    			<React.Fragment>
-		    		  		<Author user={this.state.user} />
-		    		  		<h2>Posts</h2>
-		    		  		<Article articles={this.state.articles} />
-		    		  	</React.Fragment>
+		    			<ThemeConsumer>
+	    					{({ theme }) => (
+				    			<React.Fragment>
+				    		  		<Author user={this.state.user} theme={theme} />
+				    		  		<h2>Posts</h2>
+				    		  		<Article articles={this.state.articles} />
+				    		  	</React.Fragment>
+				    		)}
+		 				</ThemeConsumer>
 		    	}
 		    </div>
 		)
@@ -69,11 +75,11 @@ export default class Profile extends React.Component {
 }
 
 
-function Author({ user }) {
+function Author({ user, theme }) {
 	const karmaFormat = Number(user.karma).toLocaleString()
 	return (
     	<div>
-    		<h1 className='header'>{user.id}</h1>
+    		<h1 className={`header ${theme}`}>{user.id}</h1>
 			<div className='details'>
 				joined <strong>{getFormattedDateFromTimestamp(user.created)}</strong> has <strong>{karmaFormat}</strong> karma
 			</div>
@@ -81,4 +87,9 @@ function Author({ user }) {
 			{ user.about && ReactHtmlParser(user.about) }
 		</div>
 	)
+}
+
+Author.propTypes = {
+	user: PropTypes.object.isRequired,
+	theme: PropTypes.string,
 }
