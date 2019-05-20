@@ -8,8 +8,7 @@ In the project directory, run the following command for the development version:
 
 ### `npm run start`
 
-The app will run in development mode and automatically
-opens in the browser at [http://localhost:8080](http://localhost:8080).
+The app will run in development mode and can be viewed in the browser at [http://localhost:8080](http://localhost:8080).
 
 Or run the project in production:
 
