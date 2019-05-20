@@ -14,5 +14,5 @@ Or run the project in production:
 
 ### `npm run deploy`
 
-View this project in online at []()
+View this project in online at [https://trusting-shaw-ab69a5.netlify.com](https://trusting-shaw-ab69a5.netlify.com)
 
