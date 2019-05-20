@@ -2,12 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import Nav from './components/Nav'
-import News from './components/News'
-import Posts from './components/Posts'
 import Loading from './components/Loading'
-import Profile from './components/Profile'
 import { ThemeProvider } from './contexts/theme'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+const Posts = React.lazy(() => import('./components/Posts'))
+const News = React.lazy(() => import('./components/News'))
+const Profile = React.lazy(() => import('./components/Profile'))
 
 class App extends React.Component {
 	state = {
@@ -29,8 +30,8 @@ class App extends React.Component {
 
 					    	<React.Suspense fallback={<Loading />}>
 						    	<Switch>
-							    	<Route exact path='/' render={(props) => <News story='top' />} />
-							    	<Route exact path='/new' render={(props) => <News story='new' />} />
+							    	<Route exact path='/' render={() => <News story='top' />} />
+							    	<Route exact path='/new' render={() => <News story='new' />} />
 							    	<Route exact path='/post' component={Posts} />
 							    	<Route exact path='/user' component={Profile} />
 							    	<Route render={() => <h1>404</h1>} />
