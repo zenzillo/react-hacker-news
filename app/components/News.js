@@ -10,19 +10,21 @@ export default class News extends React.Component {
 		error: null
 	}
 	componentDidMount() {
+		this.handleFetch()
+	}
+	componentDidUpdate(prevProps) {
+		if (prevProps.story !== this.props.story) {
+			this.handleFetch()
+		}
+	}
+	handleFetch() {
 		fetchMainPosts(this.props.story)
-		    .then((data) => {
-			    this.setState({
-			    	articles: data
-			    })
-		    })
-		    .catch(() => {
-		      console.warn('Error fetching stories')
-
-		      this.setState({
+		    .then((data) => this.setState({
+			    articles: data
+			}))
+		    .catch(() => this.setState({
 		        error: `There was an error fetching the stories.`
-		      })
-		    })
+		    }))
 	}
 	render() {
 		return (
